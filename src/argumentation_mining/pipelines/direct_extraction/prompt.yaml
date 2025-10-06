@@ -1,0 +1,84 @@
+conclusion_extraction: |
+  You are a skilled logician. Given a text, extract all conclusions (claims). A conclusion is a logical result of the relationship between the premises. Conclusions serve as the thesis of the argument.
+
+  Here are examples of different argument structures:
+
+  Example 1 - Single claim with dedicated premises (basic case):
+  Text: "La educación virtual es más efectiva que la presencial. Los estudiantes pueden aprender a su propio ritmo y tienen acceso a recursos digitales ilimitados."
+  Claims:
+  1. La educación virtual es más efectiva que la presencial
+
+  Example 2 - One claim with multiple arguments:
+  Text: "El gobierno de Gustavo Petro fracasó en su promesa de 'cambio histórico' y ha terminado sumiendo al país en mediocridad e improvisación. Petro gobierna más con trinos que con hechos, cambia ministros constantemente, improvisa en la transición energética y presenta reformas inviables."
+  Claims:
+  1. El gobierno de Gustavo Petro fracasó en su promesa de "cambio histórico"
+
+  Example 3 - Multiple claims with shared argument:
+  Text: "La libertad de marchar contra el racismo y la libertad de cuestionar al movimiento antirracista parecen distintas, pero ambas deben protegerse. La Primera Enmienda ampara un espectro de libertades y erosionar una debilita todas."
+  Claims:
+  1. La libertad de protestar contra el racismo debe protegerse
+  2. La libertad de cuestionar las tácticas del movimiento antirracista debe protegerse
+
+  Example 4 - Multiple claims with multiple arguments:
+  Text: "Las palabras de odio no son inofensivas, construyen realidades y preparan crímenes. Colombia debería haber aprendido esta lección tras décadas de conflicto, pero hoy el odio se amplifica en redes. Una democracia no puede tolerar ese lenguaje sin arriesgarse a su destrucción."
+  Claims:
+  1. Las palabras de odio construyen realidades que justifican crímenes
+  2. Colombia debería haber aprendido de su conflicto armado que el lenguaje alimenta la violencia
+  3. Hoy el discurso de odio se agrava con redes y polarización
+  4. Una democracia no puede tolerar el lenguaje intolerante
+
+  Example 5 - General claim with subdivisions:
+  Text: "La globalización ha sido una fuerza para el bien global, pero también ha generado costos políticos y sociales. Explicó gran parte de la reducción de la pobreza mundial gracias a China, aunque en Occidente debilitó a las clases medias. Además, aumentó las emisiones de CO₂ y promovió la financiarización con efectos amoralizantes."
+  Claims:
+  1. La globalización ha sido una fuerza positiva para el crecimiento y la reducción de pobreza
+  2. China explica la mayor parte de la reducción de la desigualdad global
+  3. La globalización generó problemas políticos en Occidente
+  4. La globalización agravó el cambio climático
+  5. La globalización operó vía financiarización, con consecuencias sociales negativas
+
+  Now extract all conclusions from this text:
+
+  Text: {text}
+
+  Extract all conclusions from the above text. A text may contain multiple conclusions like in the examples above. Provide each conclusion as a separate statement, without any additional commentary or explanation. Format your response as a numbered list.
+
+premise_extraction: |
+  You are a skilled logician. Given a text and a specific conclusion, extract the premises (arguments) that specifically support that conclusion.
+
+  Here are examples of how to identify premises for specific conclusions:
+
+  Example 1 - Single conclusion with dedicated premises (basic case):
+  Text: "La educación virtual es más efectiva que la presencial. Los estudiantes pueden aprender a su propio ritmo y tienen acceso a recursos digitales ilimitados."
+  Conclusion: La educación virtual es más efectiva que la presencial
+  Premises:
+  1. Los estudiantes pueden aprender a su propio ritmo
+  2. Tienen acceso a recursos digitales ilimitados
+
+  Example 2 - Multiple premises for one conclusion:
+  Text: "El gobierno de Gustavo Petro fracasó en su promesa de 'cambio histórico' y ha terminado sumiendo al país en mediocridad e improvisación. Petro gobierna más con trinos que con hechos, cambia ministros constantemente, improvisa en la transición energética y presenta reformas inviables."
+  Conclusion: El gobierno de Gustavo Petro fracasó en su promesa de "cambio histórico"
+  Premises:
+  1. Gobierno superficial, centrado en símbolos y trinos
+  2. Falta de gerencia pública con rotación excesiva de ministros  
+  3. Crisis económica agravada por políticas erráticas
+
+  Example 3 - Shared premise for multiple conclusions:
+  Text: "La libertad de marchar contra el racismo y la libertad de cuestionar al movimiento antirracista parecen distintas, pero ambas deben protegerse. La Primera Enmienda ampara un espectro de libertades y erosionar una debilita todas."
+  Conclusion: La libertad de protestar contra el racismo debe protegerse
+  Premises:
+  1. La Primera Enmienda protege un conjunto de libertades, y debilitar una afecta a todas
+
+  Example 4 - Specific premises for specific conclusions:
+  Text: "Las palabras de odio no son inofensivas, construyen realidades y preparan crímenes. Colombia debería haber aprendido esta lección tras décadas de conflicto, pero hoy el odio se amplifica en redes. Una democracia no puede tolerar ese lenguaje sin arriesgarse a su destrucción."
+  Conclusion: Colombia debería haber aprendido de su conflicto armado que el lenguaje alimenta la violencia
+  Premises:
+  1. En los años 50, insultos políticos precedieron a masacres bipartidistas
+  2. El informe de la Comisión de la Verdad confirma la magnitud de muertes
+
+  Now extract premises for this specific conclusion:
+
+  Text: {text}
+
+  Conclusion: {conclusion}
+
+  Extract only the premises from the above text that directly support this specific conclusion. Provide each premise as a separate statement, without any additional commentary or explanation. Format your response as a numbered list.

@@ -1,0 +1,101 @@
+question_extraction: |
+  You are an expert at analyzing argumentative texts. Given a text, extract the explicit or implied questions that the author raises or addresses.
+
+  Here are examples of question extraction from different types of texts:
+
+  Example 1:
+  Text: "En días pasados, el presidente Gustavo Petro hizo un llamado a los jóvenes para que organizaran asambleas estudiantiles y participaran del debate que ha de conducir a la reforma a la educación superior en Colombia. Esta convocatoria resulta oportuna para mejorar los índices de gobernabilidad. La reforma de la Ley 30, que rige desde 1992 los destinos de la educación superior, es una necesidad urgente si queremos superar la forma inequitativa como se distribuyen las oportunidades."
+  Questions:
+  1. ¿Por qué es necesaria la reforma a la educación superior en Colombia?
+  2. ¿Qué papel deben jugar los jóvenes en la reforma educativa?
+  3. ¿Cómo puede la reforma educativa mejorar la gobernabilidad?
+
+  Example 2:
+  Text: "The global economy faces unprecedented challenges. Supply chain disruptions have led to inflation, while technological automation threatens traditional employment. Central banks must balance monetary policy to address these dual pressures without triggering recession."
+  Questions:
+  1. What are the main challenges facing the global economy?
+  2. How should central banks respond to current economic pressures?
+  3. What is the relationship between automation and employment?
+
+  Example 3:
+  Text: "Climate change is no longer a distant threat but a present reality. Rising sea levels, extreme weather events, and ecosystem collapse demand immediate action. However, economic interests often conflict with environmental protection, creating a complex policy challenge."
+  Questions:
+  1. What evidence shows that climate change is a present reality?
+  2. Why is there conflict between economic and environmental interests?
+  3. What immediate actions are needed to address climate change?
+
+  Now extract questions from this text:
+
+  Text: {text}
+
+  Extract the explicit or implied questions that the author raises or addresses. Focus on the main argumentative points and debates present in the text. Provide each question as a separate statement. Format your response as a numbered list.
+
+question_answering: |
+  You are an expert at answering questions based on argumentative texts. Given a question and the full article text, provide a comprehensive answer based on the entire content.
+
+  CRITICAL: Your answer MUST be in the SAME LANGUAGE as the original article text. Do not translate or change languages.
+
+  Here are examples of how to answer questions based on full article texts:
+
+  Example 1:
+  Question: ¿Por qué es necesaria la reforma a la educación superior en Colombia?
+  Article: "En días pasados, el presidente Gustavo Petro hizo un llamado a los jóvenes para que organizaran asambleas estudiantiles y participaran del debate que ha de conducir a la reforma a la educación superior en Colombia. Esta convocatoria resulta oportuna para mejorar los índices de gobernabilidad afectada por cuenta de los escándalos que algunos medios de comunicación han producido movidos por intereses políticos claramente desestabilizadores. La reforma de la Ley 30, que rige desde 1992 los destinos de la educación superior, es una necesidad urgente si queremos superar la forma inequitativa como se distribuyen las oportunidades de estudio, de vida y de futuro que se les ofrece a las nuevas generaciones."
+
+  Answer: La reforma es necesaria porque la Ley 30 de 1992 ha resultado en una distribución inequitativa de oportunidades educativas para las nuevas generaciones. El presidente Petro ha convocado a los jóvenes a participar en este debate, reconociendo la urgencia de superar las inequidades en el acceso a la educación superior y las oportunidades futuras.
+
+  Example 2:
+  Question: How should central banks respond to current economic pressures?
+  Article: "The global economy faces unprecedented challenges. Supply chain disruptions have led to inflation, while technological automation threatens traditional employment. Central banks must balance monetary policy to address these dual pressures without triggering recession. Policymakers need comprehensive strategies that consider both immediate inflationary pressures and long-term employment implications."
+
+  Answer: Central banks should implement balanced monetary policies that address both inflation from supply chain disruptions and employment concerns from automation, while carefully avoiding policies that could trigger a recession. The approach should be comprehensive, considering both immediate and long-term economic implications.
+
+  Now answer this question using the provided article:
+
+  Question: {question}
+  Article: {article}
+
+  Answer the question based on the article content in the SAME LANGUAGE as the article. Be comprehensive and reference specific parts of the text when relevant.
+
+argument_construction: |
+  You are an expert at constructing arguments from question-answer pairs. Given a question and its answer, identify the main claim (conclusion) and the supporting premises.
+
+  CRITICAL: Your response (claim and premises) MUST be in the SAME LANGUAGE as the question and answer. Do not translate or change languages.
+
+  Here are examples of how to construct arguments from Q&A pairs:
+
+  Example 1:
+  Question: ¿Por qué es necesaria la reforma a la educación superior en Colombia?
+  Answer: La reforma es necesaria porque la Ley 30 de 1992 ha resultado en una distribución inequitativa de oportunidades educativas para las nuevas generaciones. El sistema actual está enfocado principalmente en la productividad económica, lo que limita el acceso equitativo a la educación superior.
+
+  Claim: La reforma a la educación superior en Colombia es necesaria
+  Premises:
+  1. La Ley 30 de 1992 ha resultado en distribución inequitativa de oportunidades educativas
+  2. El sistema actual está enfocado solo en productividad económica
+  3. Esto limita el acceso equitativo para las nuevas generaciones
+
+  Example 2:
+  Question: How should central banks respond to current economic pressures?
+  Answer: Central banks should implement balanced monetary policies that address both inflation from supply chain disruptions and employment concerns from automation, while carefully avoiding policies that could trigger a recession.
+
+  Claim: Central banks should implement balanced monetary policies
+  Premises:
+  1. Need to address inflation from supply chain disruptions
+  2. Need to address employment concerns from automation
+  3. Must avoid triggering a recession
+
+  Example 3:
+  Question: What immediate actions are needed to address climate change?
+  Answer: Immediate actions include transitioning to renewable energy, implementing carbon pricing mechanisms, and investing in green infrastructure to reduce emissions and build resilience against climate impacts.
+
+  Claim: Immediate climate action requires comprehensive policy measures
+  Premises:
+  1. Transition to renewable energy is needed to reduce emissions
+  2. Carbon pricing mechanisms can incentivize emission reductions
+  3. Green infrastructure investment builds climate resilience
+
+  Now construct an argument from this Q&A pair:
+
+  Question: {question}
+  Answer: {answer}
+
+  Use the question as the basis for the CLAIM and extract the key points from the answer as PREMISES. The claim should be the main assertion that the question implies, and premises should be the supporting evidence or reasoning from the answer.

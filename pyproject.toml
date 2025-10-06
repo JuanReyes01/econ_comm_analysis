@@ -1,0 +1,48 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "econ-comm-analysis"
+version = "0.0.1"
+description = "A short description of the project."
+authors = [
+  { name = "Juan Camilo Reyes" },
+]
+
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    
+]
+dependencies = [
+    "openai>=2.1.0",
+    "openpyxl>=3.1.5",
+    "pandas>=2.3.3",
+    "pydantic>=2.11.10",
+    "python-dotenv>=1.1.1",
+    "pyyaml>=6.0.3",
+]
+requires-python = "~=3.10.0"
+
+[tool.flit.module]
+name = "argumentation_mining"
+
+[tool.ruff]
+line-length = 80
+src = ["src"]
+include = ["pyproject.toml", "src/**/*.py"]
+
+[tool.ruff.lint]
+select = ["ALL"]  # Add import sorting
+ignore= ["D203", "D212", "COM812", "TD003"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["src"]
+force-sort-within-sections = true
+
+[dependency-groups]
+dev = [
+    "ruff>=0.13.3",
+]
+
