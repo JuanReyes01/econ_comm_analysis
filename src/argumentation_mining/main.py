@@ -31,17 +31,19 @@ if TYPE_CHECKING:
     from logging import Logger
 
 
-def main(  # noqa: PLR0913
+def main(  # noqa: PLR0915, PLR0913
     data_file: str = "./data/raw/columns_chi2_w_inter.xlsx",
     text_column: str = "Cuerpo",
     id_column: str = "id",
     pipeline_name: str = "socratic_extraction",
     output_dir: str = "./data/processed",
-    output_format: str = "json",  # "json", "csv", or "both"
+    output_format: str = "both",  # "json", "csv", or "both"
     log_file: str = "./reports/argumentation_mining.log",
     *,
     run_batch: bool = True,
     num_rows: int | None = None,
+    start_row: int = 0,  # New parameter for start index
+    end_row: int | None = None,  # New parameter for end index
 ) -> list[dict[str, Any]]:
     """
     Active runner of the pipeline.
@@ -63,6 +65,9 @@ def main(  # noqa: PLR0913
         run_batch: Whether to run the pipeline in batch mode (True)
                    or sequential single mode (False).
         num_rows: Number of rows to process. If None, process all rows.
+        start_row: Starting row index (0-based) for processing.
+        end_row: Ending row index (exclusive) for processing. If None,
+                 process to end.
 
     Returns:
         List of result dictionaries.
@@ -93,10 +98,16 @@ def main(  # noqa: PLR0913
     data = load_data(data_file)
     logger.info("Loaded %d rows", len(data))
 
-    # Limit rows if specified
-    if num_rows is not None:
-        data = data.head(num_rows)
-        logger.info("Processing first %d rows", len(data))
+    # Slice data based on start_row and end_row
+    if end_row is not None:
+        data = data.iloc[start_row:end_row]
+    elif num_rows is not None:
+        data = data.iloc[start_row : start_row + num_rows]
+    else:
+        data = data.iloc[start_row:]
+    logger.info(
+        "Processing rows from %d to %d", start_row, len(data) + start_row - 1
+    )
 
     preprocessed_data = preprocess_data(data, text_column, id_column, logger)
     logger.info("Preprocessed %d rows", len(preprocessed_data))
@@ -319,7 +330,8 @@ if __name__ == "__main__":
     # Example usage:
     # Process first 10 rows in batch mode, output both JSON and CSV
     main(
-        num_rows=2,
+        start_row=100,
+        num_rows=50,
         run_batch=True,
         output_format="both",
         pipeline_name="direct_extraction",

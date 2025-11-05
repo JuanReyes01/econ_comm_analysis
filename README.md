@@ -2,6 +2,10 @@
 
 Analysis tools for economic communication research, including automated argumentation mining, text analysis, and data processing pipelines.
 
+# IMPORTANTE
+SOLO EL CODIGO DE ARGUMENTATION_MINING FUNCIONA DE MOMENTO, EL RESTO DEL CODIGO DEBE SER ADAPATADO AL NUEVO FORMATO DEL REPO.
+
+
 ## Table of Contents
 
 - [Overview](#overview)

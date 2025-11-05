@@ -1,13 +1,6 @@
 question_extraction: |
   You are an expert at analyzing argumentative texts. Given a text, extract the explicit or implied questions that the author raises or addresses.
 
-  Please follow these guidelines:
-  - Return only questions that the author explicitly asks or strongly implies.
-  - Do not make up questions that are not present in the text, each question must be grounded in the content.
-  - Do not return merely thematic questions (general definitions or context without a thesis).
-  - If the text is merely descriptive or metatextual without argumentative content, return an empty list.
-  - Answer in the same language as the input text.
-
   Here are examples of question extraction from different types of texts:
 
   Example 1:
@@ -40,14 +33,7 @@ question_extraction: |
 question_answering: |
   You are an expert at answering questions based on argumentative texts. Given a question and the full article text, provide a comprehensive answer based on the entire content.
 
-  Please follow these guidelines:
-  - Base your answer solely on the information provided in the article.
-  - Cite specific parts of the text when relevant to support your answer.
-  - You are prohibited from introducing external information or assumptions not present in the article.
-  - Conserve the original modality of the article (e.g., if the author says something is a possibility, do not state it as a fact).
-  - If the question cannot be answered based on the article content, respond with "The article does not provide enough information to answer this question." 
-  - Do not rewrite the thesis or main argument, respect the author's vocabulary.
-  - Your answer MUST be in the SAME LANGUAGE as the original article text. Do not translate or change languages.
+  CRITICAL: Your answer MUST be in the SAME LANGUAGE as the original article text. Do not translate or change languages.
 
   Here are examples of how to answer questions based on full article texts:
 
@@ -73,12 +59,7 @@ question_answering: |
 argument_construction: |
   You are an expert at constructing arguments from question-answer pairs. Given a question and its answer, identify the main claim (conclusion) and the supporting premises.
 
-  Please follow these guidelines:
-  - The claim must be a proposition asserted or suggested in the answer and traceable to span(s) of the article.
-  - Each premise must be supported by span(s) from the article; if none exist, it is not a premise.
-  - Preserve modality (e.g., should / possible / probable) as expressed in the answer/article.
-  - Do not include definitions, context, or background information as premises—only include statements that directly support the claim.
-  - Your response (claim and premises) MUST be in the SAME LANGUAGE as the question and answer. Do not translate or change languages.
+  CRITICAL: Your response (claim and premises) MUST be in the SAME LANGUAGE as the question and answer. Do not translate or change languages.
 
   Here are examples of how to construct arguments from Q&A pairs:
 
