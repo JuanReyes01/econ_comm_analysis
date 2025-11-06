@@ -1,0 +1,20 @@
+(?:
+        \bB\.?A\.?\b
+      | \bA\.?B\.?\b               # "AB" or "A.B."
+      | \bB(?:Sc|\.?S\.?|Sc)\b     # "BSc" or "BS" or "B.S."
+      | \bM\.?A\.?\b               # "MA" or "M.A."
+      | \bM(?:Sc|\.?S\.?|Sc)\b     # "MSc" or "MS" or "M.S."
+      | \bPh\.?D\.?s?\b            # "PhD" variants
+      | \bJ\.?D\.?s?\b             # "JD" variants
+      | \bL\.?L\.?M\.?s?\b        # "LLM" variants
+    )
+    |   # full names
+    (?:
+        \bBachelor(?:'s)?\b
+      | \bMaster(?:'s)?\b
+      | \bDoctorate\b
+    )
+    | # some loose terms because people is stupid
+    (?:
+        \bgraduated\b
+    )

@@ -1,0 +1,29 @@
+# PROJECT_ROOT/config/app.yaml
+scraping:
+  paths:
+    authors: "data/test/test_wikipedia_normalized.csv"
+    processed_data: "data/processed/wikipedia_files"
+  wikipedia:
+    rate_limit: 83 # This is req per minute available
+    max_retries: 3
+    response_code: 429 # Too many requests
+    timeout: 1800 # 1/2 hour, to reset the rate limit
+    language: "en" # Language code for wikipedia to scrape
+  file:
+    name: "/authors_wikipedia.csv"
+    name_column: "author_name"
+parsing:
+  paths:
+    keywords_path: "data/parsing/keywords.txt"
+    degree_re_path: "data/parsing/degree_pattern.txt"
+    degree_loose_re_path: "data/parsing/loose_degree.txt"
+    blacklist_path: "data/parsing/section_blacklist.txt"
+    results_path: "data/processed/parsed_files"
+  file:
+    file_name: "/parsed_results.csv"
+extraction:
+  paths:
+    prompt_path: "data/prompt.txt"
+    results_path: "data/processed/author_profiles"
+  file:
+    file_name: "/extracted_results_gemini.json"

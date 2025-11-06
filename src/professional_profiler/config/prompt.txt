@@ -1,0 +1,68 @@
+Goal: Identify and categorize academic degrees from a Wikipedia text snippet. Respond only with JSON matching the AuthorDegrees schema (no extra text or markdown).:
+Steps:
+1. Scan for keywords (e.g., B.A., M.A., Bachelor, Master, Doctor).
+2. Identify degree types (e.g., Bachelor of Arts, Juris Doctor, Ph.D.) and their fields (e.g., History, Law).
+3. Use the long version of the degree name (e.g., Bachelor of Arts, Juris Doctor) and include the field of study if available.
+4. Detect incomplete degrees (“dropped out”, “did not graduate”, and similar) and ignore.
+5. If no completed degree is found, return a single entry with NONE
+6. Output schema (exact JSON):
+
+Examples:
+Q1: "## Early life and education
+- Litman grew up in the Shadyside neighborhood of Pittsburgh , Pennsylvania, in a Jewish family and was named a presidential scholar upon graduation from high school in 1976. Both his parents, Roslyn Litman and S. David Litman, were lawyers as well as civil liberties advocates. He attended the Tree of Life Synagogue as a youth. He received his Bachelor of Arts from Harvard College in 1980. After graduating, he worked as a sports reporter for the Associated Press and as a production assistant for feature films.
+- He received his Juris Doctor from the University of California at Berkeley in 1986, where he was editor-in-chief of the California Law Review and graduated Order of the Coif .
+
+## _infobox_education_
+- Harvard University ( BA ) University of California, Berkeley ( JD )"
+A1:[
+  {{
+    "studies": [
+      {{
+        "degree_type": "Bachelor of Arts",
+        "degree_field": []
+      }},
+      {{
+        "degree_type": "Professional",
+        "degree_field": ["Juris Doctor"]
+      }}
+    ]
+  }}
+]
+Q2: "## Academic career
+- After attending University City High School in St. Louis, Missouri , Moyn earned his A.B. degree from Washington University in St. Louis in history and French literature (1994). He continued his education, earning a Ph.D. from the University of California at Berkeley (2000) and his J.D. from Harvard Law School (2001).
+
+## _infobox_education_
+- Washington University in St. Louis ( BA ) University of California, Berkeley ( PhD ) Harvard University ( JD )
+"
+A2:[
+  {{
+    "studies": [
+      {{
+        "degree_type": "Bachelor of Arts",
+        "degree_field": ["History", "French literature"]
+      }},
+      {{
+        "degree_type": "Ph.D.",
+        "degree_field": []
+      }},
+      {{
+        "degree_type": "Professional",
+        "degree_field": ["Juris Doctor"]
+      }}
+    ]
+  }}
+]
+Q3: "## Early life
+- Foster was born in July 1976. His father, Lawrence Foster, was a franchise developer for Dunkin' Donuts . He grew up in Plymouth, Massachusetts , and spent summers at his grandparents' cottage on Peaks Island , Maine . Foster graduated from Falmouth Academy in 1994. He enrolled at the College of William & Mary , where he studied physics and film studies before dropping out his senior year . He learned HTML and moved to Washington D.C. , where he worked for government agencies.
+"
+A:[
+  {{
+    "studies": [
+      {{
+        "degree_type": "NONE",
+        "degree_field": []
+      }}
+    ]
+  }}
+]
+
